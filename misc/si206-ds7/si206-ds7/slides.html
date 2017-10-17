@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JSON and Python Dictionary</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600');
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+      body {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-weight: 300;
+      }
+      h1, h2, h3 {
+        font-weight: 400;
+      }
+      .remark-slide-content {
+          font-size: 2em;
+          line-height: 2em;
+          padding-left: 6%;
+          padding-right: 6%;
+      }
+      .remark-code, .remark-inline-code {
+          font-family: 'Ubuntu Mono';
+          line-height: 1.5em;
+      }
+
+      .twocolumns {
+          width: 49%;
+          float: left;
+      }
+      .twocolumns.omega {
+          margin-left: 2%;
+      }
+
+      a{
+        color: #0070e0;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# JSON and Python Dictionary
+
+---
+
+# JSON
+
+- **J**ava**S**cript**O**bject**N**otation
+- It’s not javascript. It is language independent
+- JSON is text
+- JSON is a lightweight data-interchange format
+- JSON is “self-describing” and easy to understand
+
+---
+
+# JSON syntax rules
+
+- Data is in **name/value** pairs
+- Data is separated by **commas**
+- Curly braces {} hold (JSON) objects
+- Square brackets [] hold arrays
+
+---
+
+# A simple example
+
+```python
+# Array(List) can contain elements with a same value
+# The Key in one JSON object needs to be unique
+{
+    # Example of a JSON object contains three key/value pairs
+    "name": "John", # 1. Store a string
+    "numbers": [1, 3, 5, 3, 9], # 2. Store an array(list)
+    "course_taken": { # 3. Store another JSON object
+        "si100": {
+            "name": "Example Course 1",
+            # It is another json object, so we can use "name" again
+            "credit": 3
+        },
+        "si101": {
+            "name": "Test Course 2",
+            "credit": 4
+        }
+    }
+}
+```
+
+---
+
+# JSON Values
+In JSON, values must be one of the following data types:
+
+- a string
+- a number
+- an JSON object (in Python, **Dictionary**)
+- An array (in Python, **List**)
+- a boolean
+- null (in Python, **None**)
+
+---
+
+# How to access values?
+
+.twocolumns.alpha[
+```python
+jo = {
+    "name": "John",
+    "numbers": [1, 3, 5, 3, 9],
+    "course_taken": {
+        "si100": {
+            "name": "Example Course",
+            "credit": 3
+        },
+        "si101": {
+            "name": "Test Course 2",
+            "credit": 4
+        }
+    }
+}
+```
+]
+
+
+.twocolumns.omega[
+```python
+jo['names']
+# John
+
+jo["numbers"]
+# [1, 3, 5, 3, 9]
+
+jo["numbers"][2]
+# 5
+
+jo["course_taken"]["si100"]
+# {"name": "Example Course", "credit": 3}
+
+jo["course_taken"]["si101"]["name"]
+# Test Course 2
+
+```
+]
+
+---
+
+# List Keys/Values in a dictionary
+
+```python
+# Only keys
+# Use the json object jo from previous slide
+for key in jo:
+    print(key)
+
+# name
+# numbers
+# course
+```
+```python
+# With values' type
+for key, value in jo["course_taken"].item()
+    print("{0}: type({1})".format(key, type(value)))
+
+# si101: type(<class 'dict'>)
+# si100: type(<class 'dict'>)
+```
+
+---
+# How to print beautified json?
+```python
+print(json.dumps(jo)) # json.dumps(dict) returns a string
+# {"course_taken": {"si100": {"credit": 3, "name": "Example Course"}, "si...
+# Print everything in a single line
+
+print(json.dumps(jo, indent=2))
+# {
+#   "name": "John",
+#   "course_taken": {
+#     "si101": {
+#       "name": "Test Course 2",
+#       "credit": 4
+#     },
+#     "si100": {
+#       "name": "Example Course",
+#       "credit": 3
+#     }
+#   }
+# }
+```
+
+
+---
+# Online tools
+
+Online json viewer to view formatted json:
+- http://jsonformatter.org/
+
+
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      var slideshow = remark.create();
+    </script>
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+':35729/livereload.js?snipver=2"></' + 'script>')</script>
+  </body>
+</html>

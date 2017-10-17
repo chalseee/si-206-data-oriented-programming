@@ -1,0 +1,138 @@
+SI 206 W17
+Put your name here: Chalse Okorom
+
+----
+
+Which option for the final project are you choosing -- 1, 2, or 3? 2
+
+IF YOU ARE CHOOSING OPTION 3, answer the following questions:
+
+* Write 1-3 sentences summarizing what the goal of your project is:
+
+
+* What are your two data sources? Provide links to documentation or websites you will be getting data from.
+
+
+* Why are you proposing this project?
+
+
+* What will the output of this project be? What will it look like, and what information will it contain?
+
+
+* What are your concerns about this proposal?
+
+
+-----
+
+THE FOLLOWING QUESTIONS ARE FOR EVERYONE. (Though they may be easier if you are choosing Option 1 or 2, because you can reference the Option 1 or 2 instructions.)
+
+* What will at least one of the classes you're going to define be called?
+Movie
+
+
+* What will that class take as input to its constructor?
+It will accept a dictionary that represents a movie
+
+
+* What will 1 instance of this class represent?
+One instance of this class will represent a movie and it's attributes -- title, director, IMDB rating, actors, number of languages in movie, etc.
+
+
+* What are 3 instance variables this class will have? What will they be called, and what information will they hold? Why are they important?
+Three instance variables this class will have, for example, are objects to represent the title of a movie, the director of a movie and it's IMDB rating. Respectively, these variables will be called title, director, and imdb_rating. These instance variables are important because they contain information that will make it easy for me to sift through the database for what I am looking for, making the movies more easily identifile.
+
+
+* Explain 2 methods the class will have that are not the class constructor (__init__ method) by answering the following questions for each. 
+ONE METHOD:
+- What will the name of the method be?
+def request_movies()
+
+
+- What will the method do?
+This method will make a request to OMDB to obtain a list of dictionaries (in which each of the dictionaries contains all the information for one movie) based on the list of search terms given as input. Then, it will loop through the dictionaries to return a list of Movie instances.
+
+
+- Will it take any additional input? 
+No; the function will only take in an input of a list of strings (in which each string is a search term).
+
+
+- Will it return anything? Should it change anything about the instance/an instance variable? 
+The function will return a list of Movie instances. It will initialize each instance variable within each Movie class as they're being made.
+
+- Why is it useful for this class definition, in this program?
+It is useful for the class definition because it creates all of the Movie instances that I will use and manipulate later in the program.
+
+
+
+ANOTHER METHOD:
+- What will the name of the method be?
+def get_neighborhood()
+
+- What will the method do?
+This method will accept a list of tweets and find the users that have been mentioned in those tweets. 
+
+
+- Will it take any additional input? 
+It will not take any additional input.
+
+
+- Will it return anything? Should it change anything about the instance/an instance variable? 
+The function will return a list of User instances. It will initialize each instance variable within each User class as they're being made.
+
+
+- Why is it useful for this class definition, in this program?
+It is useful for the class definition because it creates all of the User instances that I will use and manipulate later in the program.
+
+
+[If you definitely want to have a third, feel free to answer those questions a third time, because you'll have to do so eventually. when you write documentation!]
+
+
+* What will the tables in your database be?
+Tweets
+Users
+Movies
+
+
+* What fields will each database table have? Which field of them is the primary key? You should list the fields for each database table here.
+Tweets:
+- tweet_id (containing the string id belonging to the Tweet itself, from the data you got from Twitter -- note the id_str attribute) -- this column should be the PRIMARY KEY of this table
+- text (containing the text of the Tweet)
+- user_id (an ID string, referencing the Users table, see below)
+- time_posted (the time at which the tweet was created)
+- retweets (containing the integer representing the number of times the tweet has been #retweeted)
+Users:
+- user_id (containing the string id belonging to the user, from twitter data -- note the id_str attribute) -- this column should be the PRIMARY KEY of this table
+- screen_name (containing the screen name of the user on Twitter)
+- num_favs (containing the number of tweets that user has favorited)
+- description (text containing the description of that user on Twitter)
+Movies:
+- movie title -- this column is the PRIMARY KEY
+- movie director
+- IMDB rating
+- number of languages in the movie
+
+
+
+* List, in English, 2 queries you'll want to make from your database. At least one should be a JOIN. You can always change these later, but start with  ideas you're interested in and lessen the work on yourself later on! 
+(e.g. from class examples, maybe "I want to make a query that accesses the numbers of times each user has favorited tweets, and the number of times tweets that user posted have been favorited -- so I'll be joining the Tweets table and the Users table")
+1. Select all tweets that a were posted from 10 am to 12pm.
+2. Join User screen names with Tweet user ids to see which of them match up.
+
+
+* What are at least 2 of the data processing mechanics you're planning to use? 
+list comprehensions
+dictionary comprehensions
+
+
+* Why will each of those be useful to you? What data might you use it on? 
+(e.g. "Set comprehension: I think I'm going to be looking for unique names and proper nouns in this big set of text, so I'm going to use a set comprehension"). 
+>>>This is especially important if you are doing Option 3, but it's important for everyone!<<<
+
+list comprehensions: I think that I will need to use them to get screen names because when you fetch them after a query, they are nested within another data structure.
+dictionary comprehensions: I will use these to create dictionaries of Movie data after getting lists from the first function I described above.
+
+
+
+* What will your output look like? Will it be a .txt file? a CSV file? something else? What information will it contain? >>>This is especially important if you are doing Option 3, but it's important for everyone!<<<
+My output will be a .txt file. It will contain a visual representation of the tables that I manipulated throughout the project. Possibly, it could also contain the results of some of the queries that I performed.
+
